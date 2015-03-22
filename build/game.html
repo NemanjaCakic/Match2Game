@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Match 2 Game</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+	<div class="game-wrap cf" id="game-wrap">
+
+	</div>
+
+<script id="cards-template" type="text/x-handlebars-template">
+		{{#each this}}
+		 	<div class="card">
+		 		<div class="back"></div>
+		 		<div class="front" data-name={{name}}>
+		 			{{{icon}}}
+		 		</div>
+		 	</div>
+		{{/each}}
+</script>
+
+<script id="win-template" type="text/x-handlebars-template">
+	<div class="overlay">
+		<section class="game-end">
+			<h1 class="success game-end__title">{{status}}</h1>
+			<button class="btn-cta" id="btn-start-over">Start Over ?</button>
+		</section>
+	</div>
+</script>
+
+<script src="game.js"></script>
+</body>
+</html>

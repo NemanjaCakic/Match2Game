@@ -1,0 +1,21 @@
+{
+  "name": "Match2Game",
+  "version": "0.0.0",
+  "authors": [
+    "NemanjaCakic"
+  ],
+  "description": "Simple match two game",
+  "main": "game.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "handlebars": "~3.0.0"
+  }
+}
