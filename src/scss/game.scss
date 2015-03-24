@@ -3,94 +3,100 @@
 }
 
 
-	 * {
-	     margin: 0;
-	     padding: 0;
-	     -webkit-font-smoothing: antialiased;
-	 }
+ * {
+     margin: 0;
+     padding: 0;
+     -webkit-font-smoothing: antialiased;
+ }
 
-	 * {
-	   box-sizing: border-box;
-	 }
+ * {
+   box-sizing: border-box;
+ }
 
-	 *,
-	 :before,
-	 :after {
-	   box-sizing: border-box;
-	 }
+ *,
+ :before,
+ :after {
+   box-sizing: border-box;
+ }
 
-	 .cf:after {
-	  content: "";
-	  display: table;
-	  clear: both;
-	}
+ .cf:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
 
 
 .game-wrap ::selection {
     background: transparent;
 }
 
-	.game-wrap {
-		margin: 100px auto 0;
-		text-align: center;
-		width: 400px;
-		max-width: 100%;
-		height: auto;
-		border: 1px solid black;
-		display: block;
-		padding: 10px;
-	}
+.game-wrap {
+	margin: 20px auto;
+	text-align: center;
+	width: 400px;
+	max-width: 100%;
+	height: auto;
+	border: 1px solid black;
+	display: block;
+	padding: 10px;
+}
 
-	.card {
-		width: 23%;
-		height: 100px;
-		display: block;
-		float: left;
-		margin-right: 10px;
-		margin-top: 10px;
-		position: relative;
-		overflow: hidden;
-	}
+.card {
+	width: 23%;
+	height: 100px;
+	display: block;
+	float: left;
+	margin-right: 10px;
+	margin-top: 10px;
+	position: relative;
+	overflow: hidden;
+}
 
-	.card:nth-child(4n+4) {
-		margin-right: 0;
-	}
+.card:nth-child(4n+4) {
+	margin-right: 0;
+}
 
-	.card:nth-child(-n+4) {
-		margin-top: 0;
-	}
+.card:nth-child(-n+4) {
+	margin-top: 0;
+}
 
-	.front {
-		width: 100%;
-		display: block;
-		height: 100px;
-		position: absolute;
-		background: gray;
-		left: 0;
-		top: 0;
-		font-size: 50px;
-		line-height: 100px;
-		z-index: 1;
-	}
+.front {
+	width: 100%;
+	display: block;
+	height: 100px;
+	position: absolute;
+	background: gray;
+	left: 0;
+	top: 0;
+	font-size: 50px;
+	line-height: 100px;
+	z-index: 1;
+}
 
-	.back {
-		width: 100%;
-		display: block;
-		height: 100px;
-		position: absolute;
-		background: tomato;
-		left: 0;
-		top: 0;
-		z-index: 2;
-	}
+.back {
+	width: 100%;
+	display: block;
+	height: 100px;
+	position: absolute;
+	background: tomato;
+	left: 0;
+	top: 0;
+	z-index: 2;
+}
 
-	svg {
-		width: 200px;
-	}
+svg {
+	width: 200px;
+}
 
-	i {
-		display: block;
-	}
+i {
+	display: block;
+}
 
 .overlay {
 	position: absolute;
@@ -148,3 +154,12 @@
 	top:1px;
 }
 
+.game-timer {
+	background: tomato;
+	color: black;
+	width: 100px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 2em;
+	margin: 10% auto 0;
+}

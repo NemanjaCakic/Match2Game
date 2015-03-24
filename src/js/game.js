@@ -6,6 +6,7 @@
 		tiles : [],
 		cardOpened : false,
 		cardsLen : 0,
+		timeLeft: 60,
 
 		renderGame: function() {
 			cards = [
@@ -76,12 +77,18 @@
 		},
 
 
-		showWin: function () {
-			var that = this;
+		finishedGame: function (lose) {
+			var that = this
+				statusVal = 'You Win';
 
 			var template = Handlebars.compile(document.getElementById('win-template').innerHTML);
+
+			if (lose === true) {
+				statusVal = 'You Lose';
+			}
+
 			var temp = template({
-				'status': 'You Win',
+				'status': statusVal,
 			});
 
 			// we are appending string so we use insertAdjacentHTML
@@ -121,7 +128,7 @@
 							that.tiles = [];
 
 							if (that.cardsLen === that.tilesScored.length) {
-								that.showWin();
+								that.finishedGame();
 							}
 
 						} else {
@@ -142,14 +149,40 @@
 
 		},
 
-		startOver: function() {
-			this.gameWrap.innerHTML = '';
-			this.init();
-		},
-		init : function () {
-			this.renderGame();
- 			this.handleEvents();
+		startTimer: function() {
+			var that = this,
+				timer = document.getElementById('game-timer'),
+				interval;
+
+			timer.innerHTML = that.timeLeft;
+
+		function startInterval() {
+				interval = setInterval(updateTime, 1000);
+			}
+
+		function updateTime() {
+			that.timeLeft -= 1;
+			timer.innerHTML = that.timeLeft;
+
+			if (that.timeLeft === 0) {
+				clearInterval(interval);
+				that.finishedGame(true);
+			}
 		}
-	};
+
+		startInterval();
+	},
+
+	startOver: function() {
+		this.gameWrap.innerHTML = '';
+		this.timeLeft = 60;
+		this.init();
+	},
+	init : function () {
+		this.renderGame();
+		this.handleEvents();
+		this.startTimer();
+	}
+};
 
 	Game.init();
