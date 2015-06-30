@@ -3799,7 +3799,7 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 			var template = Handlebars.compile(document.getElementById('cards-template').innerHTML);
 			var temp = template(cards);
 
-
+			this.gameWrap.innerHTML = '';
 			// we are appending string so we use insertAdjacentHTML
 			// instead of insertChild whitch needs "real" element
 			this.gameWrap.insertAdjacentHTML('beforeend', temp);
@@ -3932,4 +3932,13 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 	}
 };
 
-	Game.init();
+	window.onload = function(){
+		var startGameBtn = document.getElementById('js-start-game');
+
+		startGameBtn.addEventListener('click', function(){
+			Game.init();
+		});
+
+
+
+	};
