@@ -7,6 +7,7 @@
 		cardOpened : false,
 		cardsLen : 0,
 		timeLeft: 60,
+		interval: null,
 
 		renderGame: function() {
 			cards = [
@@ -45,7 +46,7 @@
 			];
 
 			cards = cards.concat(cards.slice()).sort(function() {
-			  	return .5 - Math.random();
+			  	return 0.5 - Math.random();
 			});
 
 
@@ -80,6 +81,11 @@
 		finishedGame: function (lose) {
 			var that = this,
 				statusVal = 'You Win';
+
+				if (that.interval) {
+					clearInterval(that.interval);
+					console.log('cleared');
+				}
 
 			var template = Handlebars.compile(document.getElementById('win-template').innerHTML);
 
@@ -126,8 +132,12 @@
 							that.tilesScored.push(that.tiles[0]);
 							that.tilesScored.push(that.tiles[1]);
 							that.tiles = [];
-
+								console.log(that.cardsLen);
+								console.log(that.tilesScored.length);
+								console.log('-------');
 							if (that.cardsLen === that.tilesScored.length) {
+								console.log(that.cardsLen);
+								console.log(that.tilesScored.length);
 								that.finishedGame();
 							}
 
@@ -151,13 +161,12 @@
 
 		startTimer: function() {
 			var that = this,
-				timer = document.getElementById('game-timer'),
-				interval;
+				timer = document.getElementById('game-timer');
 
 			timer.innerHTML = that.timeLeft;
 
 		function startInterval() {
-				interval = setInterval(updateTime, 1000);
+				that.interval = setInterval(updateTime, 1000);
 			}
 
 		function updateTime() {
@@ -165,7 +174,7 @@
 			timer.innerHTML = that.timeLeft;
 
 			if (that.timeLeft === 0) {
-				clearInterval(interval);
+				clearInterval(that.interval);
 				that.finishedGame(true);
 			}
 		}
@@ -176,6 +185,7 @@
 	startOver: function() {
 		this.gameWrap.innerHTML = '';
 		this.timeLeft = 60;
+		this.tilesScored = [];
 		this.init();
 	},
 	init : function () {

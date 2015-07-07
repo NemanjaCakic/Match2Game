@@ -3754,6 +3754,7 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 		cardOpened : false,
 		cardsLen : 0,
 		timeLeft: 60,
+		interval: null,
 
 		renderGame: function() {
 			cards = [
@@ -3792,7 +3793,7 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 			];
 
 			cards = cards.concat(cards.slice()).sort(function() {
-			  	return .5 - Math.random();
+			  	return 0.5 - Math.random();
 			});
 
 
@@ -3827,6 +3828,11 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 		finishedGame: function (lose) {
 			var that = this,
 				statusVal = 'You Win';
+
+				if (that.interval) {
+					clearInterval(that.interval);
+					console.log('cleared');
+				}
 
 			var template = Handlebars.compile(document.getElementById('win-template').innerHTML);
 
@@ -3873,8 +3879,12 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 							that.tilesScored.push(that.tiles[0]);
 							that.tilesScored.push(that.tiles[1]);
 							that.tiles = [];
-
+								console.log(that.cardsLen);
+								console.log(that.tilesScored.length);
+								console.log('-------');
 							if (that.cardsLen === that.tilesScored.length) {
+								console.log(that.cardsLen);
+								console.log(that.tilesScored.length);
 								that.finishedGame();
 							}
 
@@ -3898,13 +3908,12 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 
 		startTimer: function() {
 			var that = this,
-				timer = document.getElementById('game-timer'),
-				interval;
+				timer = document.getElementById('game-timer');
 
 			timer.innerHTML = that.timeLeft;
 
 		function startInterval() {
-				interval = setInterval(updateTime, 1000);
+				that.interval = setInterval(updateTime, 1000);
 			}
 
 		function updateTime() {
@@ -3912,7 +3921,7 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 			timer.innerHTML = that.timeLeft;
 
 			if (that.timeLeft === 0) {
-				clearInterval(interval);
+				clearInterval(that.interval);
 				that.finishedGame(true);
 			}
 		}
@@ -3923,6 +3932,7 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 	startOver: function() {
 		this.gameWrap.innerHTML = '';
 		this.timeLeft = 60;
+		this.tilesScored = [];
 		this.init();
 	},
 	init : function () {
