@@ -19,6 +19,10 @@
    box-sizing: border-box;
  }
 
+svg {
+	width: 100%;
+}
+
  .cf:after {
   content: "";
   display: table;
@@ -83,6 +87,9 @@
 	width: 100%;
 	display: block;
 	height: 100px;
+	border-radius: 10px;
+		border: 5px solid black;
+		background: white;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -91,16 +98,27 @@
 }
 
 .back {
-	background: tomato;
+
+
+
 	z-index: 2;
 
 	transform: rotateY(0deg);
+
+	&:before {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background:  url('data:image/svg+xml,%3Csvg%20width%3D%22256%22%20height%3D%22361%22%20viewBox%3D%220%200%20256%20361%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20preserveAspectRatio%3D%22xMinYMin%20meet%22%3E%3Cpath%20d%3D%22M255.555%2070.766l-23.24%20260.36-104.47%2028.962L23.66%20331.166.445%2070.766h255.11z%22%20fill%3D%22%23E44D26%22%2F%3E%3Cpath%20d%3D%22M128%20337.95l84.417-23.403%2019.86-222.49H128V337.95z%22%20fill%3D%22%23F16529%22%2F%3E%3Cpath%20d%3D%22M82.82%20155.932H128v-31.937H47.917l.764%208.568%207.85%2088.01H128v-31.937H85.74l-2.92-32.704zM90.018%20236.542h-32.06l4.474%2050.146%2065.42%2018.16.148-.04V271.58l-.14.037-35.568-9.604-2.274-25.47z%22%20fill%3D%22%23EBEBEB%22%2F%3E%3Cpath%20d%3D%22M24.18%200h16.23v16.035h14.847V0h16.23v48.558h-16.23v-16.26H40.412v16.26H24.18V0zM92.83%2016.103H78.544V0h44.814v16.103h-14.295v32.455h-16.23V16.103zM130.47%200h16.923l10.41%2017.062L168.203%200h16.93v48.558h-16.164V24.49l-11.167%2017.265h-.28L146.35%2024.49v24.068h-15.88V0zM193.21%200h16.235v32.508h22.824v16.05h-39.06V0z%22%2F%3E%3Cpath%20d%3D%22M127.89%20220.573h39.327l-3.708%2041.42-35.62%209.614v33.226l65.472-18.145.48-5.396%207.506-84.08.78-8.576H127.89v31.937zM127.89%20155.854v.078h77.143l.64-7.178%201.456-16.19.762-8.57H127.89v31.86z%22%20fill%3D%22%23FFF%22%2F%3E%3C%2Fsvg%3E') no-repeat center center;
+	     background-size: 50%;
+	}
 }
 
 .front {
-	background: gray;
-	font-size: 50px;
-	line-height: 100px;
 	z-index: 1;
 
 	transform: rotateY(180deg);
@@ -108,11 +126,10 @@
 
 .front svg {
 	width: 100%;
-	padding: .3em;
-}
+	padding: .8em;
+	height: auto;
+	margin-top: 5px;
 
-svg {
-	width: 200px;
 }
 
 i {
