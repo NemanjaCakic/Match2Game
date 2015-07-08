@@ -3869,7 +3869,10 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 					return;
 				}
 
-				tile.style.zIndex = 100;
+				//tile.style.zIndex = 100;
+
+				// parentNode used twice intentionally because we need element one level "higher" elemet
+				tile.parentNode.parentNode.classList.add('active');
 				that.tiles.push(tile);
 
 		setTimeout(function(){
@@ -3889,8 +3892,8 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 							}
 
 						} else {
-							that.tiles[0].style.zIndex = 1;
-							that.tiles[1].style.zIndex = 1;
+							that.tiles[0].parentNode.parentNode.classList.remove('active');
+							that.tiles[1].parentNode.parentNode.classList.remove('active');
 						}
 
 						that.tiles = [];

@@ -48,7 +48,7 @@
 	padding: 10px;
 }
 
-.card {
+.card-container {
 	width: 23%;
 	height: 100px;
 	display: block;
@@ -56,39 +56,59 @@
 	margin-right: 10px;
 	margin-top: 10px;
 	position: relative;
-	overflow: hidden;
+
+	perspective: 1000;
 }
 
-.card:nth-child(4n+4) {
+.card-container.active .card {
+	transform: rotateY(-180deg);
+}
+
+.card-container:nth-child(4n+4) {
 	margin-right: 0;
 }
 
-.card:nth-child(-n+4) {
+.card-container:nth-child(-n+4) {
 	margin-top: 0;
 }
 
-.front {
+.card {
+	position: relative;
+
+	transition: 0.6s;
+	transform-style: preserve-3d;
+}
+
+.back, .front {
 	width: 100%;
 	display: block;
 	height: 100px;
 	position: absolute;
-	background: gray;
 	left: 0;
 	top: 0;
-	font-size: 50px;
-	line-height: 100px;
-	z-index: 1;
+
+	backface-visibility: hidden;
 }
 
 .back {
-	width: 100%;
-	display: block;
-	height: 100px;
-	position: absolute;
 	background: tomato;
-	left: 0;
-	top: 0;
 	z-index: 2;
+
+	transform: rotateY(0deg);
+}
+
+.front {
+	background: gray;
+	font-size: 50px;
+	line-height: 100px;
+	z-index: 1;
+
+	transform: rotateY(180deg);
+}
+
+.front svg {
+	width: 100%;
+	padding: .3em;
 }
 
 svg {
@@ -168,9 +188,14 @@ i {
 	}
 }
 
+.btn-cta--start,
+.game-timer {
+	text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+}
+
 .game-timer {
 	background: tomato;
-	color: black;
+	color: white;
 	width: 100px;
 	height: 50px;
 	line-height: 50px;
