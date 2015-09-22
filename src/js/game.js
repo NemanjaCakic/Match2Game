@@ -6,8 +6,9 @@
 		tiles : [],
 		cardOpened : false,
 		cardsLen : 0,
-		timeLeft: 60,
+		timeLeft: 45,
 		interval: null,
+		won: false,
 
 		renderGame: function() {
 			cards = [
@@ -49,7 +50,6 @@
 			  	return 0.5 - Math.random();
 			});
 
-
 			var template = Handlebars.compile(document.getElementById('cards-template').innerHTML);
 			var temp = template(cards);
 
@@ -89,8 +89,11 @@
 
 			var template = Handlebars.compile(document.getElementById('win-template').innerHTML);
 
-			if (lose === true) {
+			if (lose === true && that.won === false) {
 				statusVal = 'You Lose';
+				that.won = false;
+			} else {
+				that.won = true;
 			}
 
 			var temp = template({
@@ -122,8 +125,6 @@
 					return;
 				}
 
-				//tile.style.zIndex = 100;
-
 				// parentNode used twice intentionally because we need element one level "higher" elemet
 				tile.parentNode.parentNode.classList.add('active');
 				that.tiles.push(tile);
@@ -135,12 +136,9 @@
 							that.tilesScored.push(that.tiles[0]);
 							that.tilesScored.push(that.tiles[1]);
 							that.tiles = [];
-								console.log(that.cardsLen);
-								console.log(that.tilesScored.length);
-								console.log('-------');
+
 							if (that.cardsLen === that.tilesScored.length) {
-								console.log(that.cardsLen);
-								console.log(that.tilesScored.length);
+
 								that.finishedGame();
 							}
 
@@ -188,6 +186,7 @@
 	startOver: function() {
 		this.gameWrap.innerHTML = '';
 		this.timeLeft = 60;
+		this.won = false;
 		this.tilesScored = [];
 		this.init();
 	},
@@ -200,6 +199,7 @@
 
 	window.onload = function(){
 		var startGameBtn = document.getElementById('js-start-game');
+		document.getElementById('game-timer').innerHTML = Game.timeLeft;
 
 		startGameBtn.addEventListener('click', function(){
 			Game.init();
