@@ -4282,6 +4282,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	startOver: function() {
 		this.gameWrap.innerHTML = '';
 		this.timeLeft = 45;
+		document.getElementById('game-timer').innerHTML = this.timeLeft;
 		this.won = false;
 		this.tilesScored = [];
 		this.init();
