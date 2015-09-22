@@ -4262,8 +4262,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			var that = this,
 				timer = document.getElementById('game-timer');
 
-			timer.innerHTML = that.timeLeft;
-
 		function startInterval() {
 				that.interval = setInterval(updateTime, 1000);
 			}
@@ -4283,7 +4281,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	startOver: function() {
 		this.gameWrap.innerHTML = '';
-		this.timeLeft = 60;
+		this.timeLeft = 45;
 		this.won = false;
 		this.tilesScored = [];
 		this.init();
