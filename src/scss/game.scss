@@ -1,4 +1,27 @@
-@-ms-viewport { // making site scale in IE right way, have nothing to do with sass
+// media query variables
+$bp-small: "(min-width: 400px)";
+$bp-medium: "(min-width: 600px)";
+$bp-large: "(min-width: 1100px)";
+
+
+// mixins
+@mixin bp($point) {
+  @if $point == 'small' {
+    @media #{$bp-small} { @content; }
+  }
+  @if $point == 'mid' {
+    @media #{$bp-medium} { @content; }
+  }
+  @if $point == 'large' {
+    @media #{$bp-large} { @content; }
+  }
+  @if $point == 'retina' {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { @content }
+  }
+}
+
+
+@-ms-viewport {
     width: device-width;
 }
 
@@ -33,7 +56,7 @@ svg {
 	width: 100%;
 	margin: 0 auto;
 	text-align: center;
-	padding-top: 4%;
+	padding-top: 2%;
 }
 
 
@@ -42,23 +65,32 @@ svg {
 }
 
 .game-wrap {
-	margin: 20px auto;
+	margin: 1.25em auto; // 20 / 16
 	text-align: center;
-	width: 400px;
+	width: 18.75em; // 300 / 16
+
+	@include bp('small') {
+        width: 23.125em; // 370 / 16
+    }
 	max-width: 100%;
 	height: auto;
-	border: 1px solid black;
 	display: block;
-	padding: 10px;
+	padding: 0.625em; // 10 / 16
 }
 
 .card-container {
-	width: 23%;
-	height: 100px;
+	width: 5.375em; // 86 / 16
+	width: 3.9em; // 62,4 / 16
+
+	@include bp('small') {
+        width: 5em; // 80 / 16
+    }
+
+	height: 6.25em; // 100 / 16
 	display: block;
 	float: left;
-	margin-right: 10px;
-	margin-top: 10px;
+	margin-right: 0.625em; // 10 / 16
+	margin-top: 0.625em; // 10 / 16
 	position: relative;
 
 	perspective: 1000;
@@ -67,15 +99,13 @@ svg {
 .card-container.active .card {
 	transform: rotateY(-180deg);
 }
-
-.card-container:nth-child(4n+4) {
+ .card-container:nth-child(4n+4) {
 	margin-right: 0;
 }
 
 .card-container:nth-child(-n+4) {
 	margin-top: 0;
 }
-
 .card {
 	position: relative;
 
@@ -88,8 +118,8 @@ svg {
 	display: block;
 	height: 100px;
 	border-radius: 10px;
-		border: 5px solid black;
-		background: white;
+	border: 5px solid black;
+	background: white;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -128,8 +158,11 @@ svg {
 	width: 100%;
 	padding: .8em;
 	height: auto;
-	margin-top: 5px;
+	margin-top: 1.25em; // 20 / 16
 
+	@include bp('small') {
+       margin-top: 0.625em; // 10 / 16
+    }
 }
 
 i {
@@ -149,13 +182,12 @@ i {
 
 .game-end {
 	text-align: center;
-	background: green;
-	background: rgba(0, 115, 0, .7);
+	background: rgba(0, 0, 0, .4);
 	margin: auto;
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
-	width: 50%;
-	height: 50%;
+	width: 100%;
+	height: 100%;
 	padding-top: 5em;
 }
 
@@ -169,29 +201,29 @@ i {
 
 
 .btn-cta {
-	box-shadow:inset 0px 1px 0px 0px #f29c93;
-	background:linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
-	background-color:#fe1a00;
-	border-radius:6px;
-	border:1px solid #d83526;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #b23e35;
+	box-shadow: inset 0px 1px 0px 0px #f29c93;
+	background: linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+	background-color: #fe1a00;
+	border-radius: 6px;
+	border: 1px solid #d83526;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: arial sans-serif;
+	font-size: 0.9375em; // 15 / 16
+	font-weight: bold;
+	padding: 0.4em 1.6em;  // 6 / 15 --- 24 / 15
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #b23e35;
 
 	&:hover {
-		background:linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
-		background-color:#ce0100;
+		background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
+		background-color: #ce0100;
 	}
 
 	&:active {
-		position:relative;
-		top:1px;
+		position: relative;
+		top: 1px;
 	}
 
 
@@ -213,9 +245,9 @@ i {
 .game-timer {
 	background: tomato;
 	color: white;
-	width: 100px;
-	height: 50px;
-	line-height: 50px;
-	font-size: 2em;
-	margin: 3.5% auto;
+	width: 3.125em; // 100 / 32
+	height: 1.5625em; // 50 / 32
+	line-height: 1.5625em; // 50 / 32
+	font-size: 2em; // 32 / 16
+	margin: 0.625em auto 0.3125em; // 20 / 32 / 10 / 32
 }

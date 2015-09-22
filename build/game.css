@@ -24,7 +24,7 @@ svg {
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  padding-top: 4%; }
+  padding-top: 2%; }
 
 .game-wrap ::-moz-selection {
   background: transparent; }
@@ -33,25 +33,31 @@ svg {
   background: transparent; }
 
 .game-wrap {
-  margin: 20px auto;
+  margin: 1.25em auto;
   text-align: center;
-  width: 400px;
+  width: 18.75em;
   max-width: 100%;
   height: auto;
-  border: 1px solid black;
   display: block;
-  padding: 10px; }
+  padding: 0.625em; }
+  @media (min-width: 400px) {
+    .game-wrap {
+      width: 23.125em; } }
 
 .card-container {
-  width: 23%;
-  height: 100px;
+  width: 5.375em;
+  width: 3.9em;
+  height: 6.25em;
   display: block;
   float: left;
-  margin-right: 10px;
-  margin-top: 10px;
+  margin-right: 0.625em;
+  margin-top: 0.625em;
   position: relative;
   -webkit-perspective: 1000;
           perspective: 1000; }
+  @media (min-width: 400px) {
+    .card-container {
+      width: 5em; } }
 
 .card-container.active .card {
   -webkit-transform: rotateY(-180deg);
@@ -107,7 +113,10 @@ svg {
   width: 100%;
   padding: .8em;
   height: auto;
-  margin-top: 5px; }
+  margin-top: 1.25em; }
+  @media (min-width: 400px) {
+    .front svg {
+      margin-top: 0.625em; } }
 
 i {
   display: block; }
@@ -124,16 +133,15 @@ i {
 
 .game-end {
   text-align: center;
-  background: green;
-  background: rgba(0, 115, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
   margin: auto;
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   padding-top: 5em; }
 
 .game-end__title {
@@ -153,10 +161,10 @@ i {
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: arial;
-  font-size: 15px;
+  font-family: arial sans-serif;
+  font-size: 0.9375em;
   font-weight: bold;
-  padding: 6px 24px;
+  padding: 0.4em 1.6em;
   text-decoration: none;
   text-shadow: 0px 1px 0px #b23e35; }
   .btn-cta:hover {
@@ -178,8 +186,8 @@ i {
 .game-timer {
   background: tomato;
   color: white;
-  width: 100px;
-  height: 50px;
-  line-height: 50px;
+  width: 3.125em;
+  height: 1.5625em;
+  line-height: 1.5625em;
   font-size: 2em;
-  margin: 3.5% auto; }
+  margin: 0.625em auto 0.3125em; }
