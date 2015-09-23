@@ -201,6 +201,7 @@
 		document.getElementById('game-timer').innerHTML = Game.timeLeft;
 
 		startGameBtn.addEventListener('click', function(){
+			this.setAttribute('disabled', 'disabled');
 			Game.init();
 		});
 
