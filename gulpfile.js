@@ -12,14 +12,6 @@ var concat = require('gulp-concat'),
     minifyHTML = require('gulp-minify-html');
 
 
-// gulp.task('scripts', function() {
-//   gulp.src(['./js/jquery.js','./js/*.js'])
-//     .pipe(concat('script.js'))
-//     .pipe(plumber())
-//     .pipe(uglify())
-//     .pipe(gulp.dest('./js/min/'));
-// });
-
 gulp.task('scripts', function() {
   gulp.src(['./bower_components/handlebars/handlebars.js','./src/js/game.js'])
     .pipe(concat('./game.js'))
@@ -47,7 +39,6 @@ gulp.task('html', function() {
     .pipe(livereload());
 });
 
-
 // default gulp task
 gulp.task('default', function() {
   livereload.listen();
@@ -56,6 +47,3 @@ gulp.task('default', function() {
   gulp.watch('./src/js/*.js', ['scripts']);
 });
 
-
-// TODO
-// Time, points, size, effects, moves
