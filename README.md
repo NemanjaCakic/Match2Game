@@ -1,9 +1,9 @@
 # Match2Game
 
-Simple matching pairs game 
+Simple matching pairs game
 
 Link to game:
 
-[http://nemanjac.com/demo/Match2Game/](http://nemanjac.com/demo/Match2Game/)
+[http://nemanjacakic.com/match2game/](http://nemanjacakic.com/match2game/)
 
-## Have fun! 
+## Have fun!
